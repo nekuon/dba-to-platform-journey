@@ -1,27 +1,13 @@
-# PROGRESS LOG
-
-## Phase 0: Foundations
-**Current week/day:** Week 1, Day 2
-**Hours studied this week:** 4 / 25
-
-## Day 1 (2026-10-08)
-- **What I learned:** Understanding the difference between the terminal, the shell and the kernel. Understanding how to run simple commands like pwd, ls, ls -al, and others
-- **Commands I used:** pwd, ls, ls -l, ls -lh, ls -a, cd, cd .., cd ~, cd -, mkdir, mkdir -p, touch, man, whoami, free -h, df -h, nproc
-- **What broke / confused me:** leaving off - after a command for example:ls l; instead of ls -l; forgetting the space in cd.., cd ..;cd../../../ instead of cd ../../../
-- **How I fixed it:** "slowed down" to accomplish task writing ls -lh instead of ommiting -, ensuring there is space in cd ../../../ instead of cd../../../
-- **Quiz score:** 7 / 8
-- **Challenge completed?** yes
-- **Snapshot taken?** yes (clean-start)
-- **System:** Red Hat Enterprise Linux 9.4 in VirtualBox, 2 CPUs, 5.4 GiB RAM
-
-## Day 2 (2026-10-19)
-- **Hours studied today:** 6.5 hrs
-- **What I learned:** I learnt moving folders and renaming them. With echo "line 1" > notes.txt, the > replaces everything in the file, but with echo "line 2" >> notes.txt, the >> adds to the end and keeps what was already there.
-- **Commands I used:** `mv`, `cp -r`, `rm -i`, `rm -ri`, `rmdir`, `cat`, `head`, `tail`, `less`, `echo`, `rpm -q`, `dnf repolist`
-- **What broke / confused me:** Created day2 in the wrong folder and moved it back with 'mv day2 ..'. Also dnf shows no repositories available through subscriptions.
-- **How I fixed it:** I moved day2 up into week1 with mv day2 .. and used pwd to check where I was. I learned that rmdir only removes empty folders, so to remove a folder with contents I use rm -ri, which asks before deleting. For the clock issue I started troubleshooting with command 'date', then timedatectl. I entered 'sudo systemctl restart chronyd' then then 'sudo chronyc makestep', which failed with command not found because of a typo. I reran 'date'and 'timedatectl' and noticed clock was synchronized. dnf still lists only the install-disc repository, even after the clock fix, refresh, and trying to enable the repositories.
-- **Quiz scores:** 3/7, then 3.5/7, then 6.25/7 after doing it hands-on
-- **Biggest lesson:** Avoid typo errors. Spent too much time correcting them. Learnt to pace myself doing exercises.
+## Day 3 (2026-10-20)
+**Week of Oct 19:** 11 / 25 so far (Day 2: 6.5 hrs, Day 3: 4.5 hrs)
+- **Hours studied today:** 4.5 hrs
+- **What I learned:** On a folder, x means permission to enter it with cd. After chown, labuser became the owner of note.txt and I became one of the "others," who only have read permission, so I couldn't write to it. 644 means -rw-r--r--, 755 means -rwxr-xr-x, and 640 means -rw-r-----.
+- **Commands I used:** `id`, `groups`, `chmod`, `chown`, `useradd`, `passwd`, `usermod`, `groupadd`, `userdel`, `groupdel`, `sudo`
+- **What broke / confused me:** I made typos: tourch instead of touch, chmond instead of chmod, and lauser instead of labuser. I also ran chmod 640 plan.txt from the day3 folder when the file was in team-docs/.
+- **How I fixed it:** For the typos, the message said "command not found" (or "user does not exist"), which meant the name was wrong, so I retyped it. For plan.txt, the message said "No such file or directory," which meant the path was wrong, so I used team-docs/plan.txt.
+- **Quiz scores:** 6 / 7. I first answered only two questions (1.25 points), then finished the quiz and improved two answers after feedback.
+- **Biggest lesson:** Use Tab to complete names and re-read each command before pressing Enter.
 
 ## Next up
-Find out whose Red Hat account registered the VM, then fix dnf (re-register or use the install disc as a local repository). Then Day 3: users and permissions.
+
+Day 4: text processing (grep, pipes, find, nano). Day 5: weekly test. Fix dnf before Week 2.
