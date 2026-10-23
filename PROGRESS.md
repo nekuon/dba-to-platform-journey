@@ -1,11 +1,26 @@
- ## Day 4 (2026-10-21)
-   - **Hours studied today:** 4 hrs
-   - **What I learned:** I learnt in this section pipe grep and nano. nano is a text edit software. pipe is used to input the output of a command. And grep is used to search for a specific text pattern inside a file or stream output
-   - **Commands I used:** `>`, `>>`, `2>`, `|`, `wc`, `sort`, `grep`, `find`, `nano`
-   - **What broke / confused me:** I forgot to attach the word "echo" eg echo hi >> same.txt . 
-   - **How I fixed it:**  I had to correct myself in including the word echo
-   - **Quiz scores:** I had to take the quiz multiple times. I eventually scored 6.5/7. I should know by now how to be more specific answering questions
-   - **Biggest lesson:** I have to improve on my typos. The tab button will be of needed help.
+Week 1 complete (Day 5 done)
+- **Hours studied today:** 3 hrs
+- **What I learned:** I learnt utilizing commands like grep, mkdir -p, mkdir -p project/{docs,scripts,logs,backup} to create project subfolders docs,scripts,logs and backup
+- **Commands I used:** `mkdir -p`, `touch`, `echo`, `>>`, `grep`, `chmod`, `cp -r`, `find`, `wc -l`, `|`, `rm -ri`, `nano`
+- **What broke / confused me:** typo, still errors like la instead of 'ls'
+- **How I fixed it:** I adapted utilizing the tap in completing my typos.
+- **Test scores:** first try 8.25 / 12, retake 10.25 / 12
+- **Biggest lesson:** Change habits, using tab to complete text
+## Week 1 summary (Days 1 to 5)
+
+| Day | Topic | Hours | Score |
+|---|---|---|---|
+| 1 | Terminal, files and folders | 4 | 7 / 8 |
+| 2 | Copy, move, delete, read files | 6.5 | 6.25 / 7 |
+| 3 | Users and permissions | 4.5 | 6 / 7 |
+| 4 | Redirection, pipes, grep, find, nano | 4 | 6.5 / 7 |
+| 5 | Week 1 lab and test | | 10.25 / 12 |
+
+- **Total hours for Week 1:** 22 hrs
+- **Things I can now do:** bacis Linux comand
+- **Things I still need to practice:** I need to accuse the tap for complete inputs
+- **Open problem:** dnf shows only the install-disc repository. Next step: register the VM under my own Red Hat Developer account.
+
 ## Next up
 
-Day 5: Week 1 weekly test. Then fix dnf before Week 2.
+Fix dnf, then Week 2: processes, packages, services and logs.
