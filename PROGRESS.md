@@ -1,27 +1,25 @@
-## Week 2, Day 1: Processes (Thu 5 Nov 2026)
+## Week 2, Day 2: Services (November 12, 2026)
 
-Hours spent: 3 hrs
+Hours spent: 4.5 hrs
 
-What I did: I learn the difference between a program and a process. For process i used 'sleep', 'ps aux'.'top', 'free -h'. I created a txt file (answers.txt) and printed content
+What I did: I worked with systemd (PID 1), the service manager that controls all system services. I explored how to check, stop, start, and restart services like chronyd, and checked PostgreSQL (postgresql-16) and its 7 processes (1 parent and 6 workers). I discovered how to check if a service is enabled or disabled, and why sudo is required to manage services (because systemd runs as root, making service control an administrator job). I also wrote a custom unit file (mysleep.service) and learned to run sudo systemctl daemon-reload after every edit.
 
-What worked: I was able to run sleep program after a desired time like 'sleep 600' and also run it in background 'sleep 600 &'. I was able to print the PID. I was able to kill the process
+What worked: Writing and running my custom mysleep.service unit file, testing Restart=always after kill -9, and scripting my challenge commands cleanly.
 
-What was hard or went wrong: For getting the '&' after 'sleep' which froze the terminal(i should have used ctrl+C. Miss spelling file name (eventually renamed). Typing nano twice.I learnt only a user can delete its own command if i must use another user it must be a super user
+What was hard or went wrong: Typo and case-sensitivity errors in the unit file (ExecStart and WantedBy), forgetting to run daemon-reload after editing a unit file, swapping stop and start order, running plain nano without sudo so it could not save in /etc/systemd/system/, and typing postgres instead of postgresql-16.
 
-Commands I now know: 'sleep 900 &', 'ps aux | grep chonyd', 'pgrep -u postgres postgres', 'kill PID' 'fg/bg', 'kill -9', 'pkill mysleep','jobs','uptime', Ctrl+C and Ctrl+Z.
-
-Next: Week 2, Day 2 (services)
-
-## Week 2, Day 2: Services 
-
-Hours spent:4.5 hrs
-
-What I did: I worked with systemd. I explored service running (how to stop, start, restart). I discover how to tell if its enabled and diabled. I discovered to execute code as Administrator, sudo has to be used first (also because it in the root). Also how to create a unit file. After making any change to unit file daemon-reload (sudo systemctl daemon-reload) must be ran. 
-
-What worked: Execution of unit file.
-
-What was hard or went wrong: Typo error. case sensitivity for ExecStart and WantBy. Forgetting to run daemon-reload after changing a unit file 
-
-Commands I now know: 'systemctl status chronyd' 'systemctl is-active chronyd' 'systemctl is-active chronyd''systemctl is-enabled chronyd' 'sudo systemctl start chronyd''sudo systemctl stop chronyd''sudo systemctl restart chronyd''reload''systemctl is-enabled chronyd' 'ps  -p 1'' sudo systemctl daemon-reload' systemctl is-active chronyd = print active or inactive'
+Commands I now know:
+- `ps -p 1` = show PID 1 (systemd)
+- `systemctl status chronyd` = show full status, Loaded state, Active state, and Main PID
+- `systemctl is-active chronyd` = print active or inactive
+- `systemctl is-enabled chronyd` = print enabled or disabled
+- `sudo systemctl start chronyd` = start a stopped service now
+- `sudo systemctl stop chronyd` = stop a running service now
+- `sudo systemctl restart chronyd` = stop and immediately start a service with a new PID
+- `sudo systemctl enable chronyd` = set a service to start automatically at boot
+- `sudo systemctl disable mysleep` = stop a service from starting automatically at boot
+- `sudo systemctl daemon-reload` = reload systemd after creating or editing a unit file
+- `which sleep` = find the exact full path of the sleep binary (/usr/bin/sleep)
+- `pgrep chronyd` = print the running PID(s) of chronyd
 
 Next: Week 2, Day 3 (logs)
