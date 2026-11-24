@@ -78,10 +78,9 @@ What worked: I was able to run sleep program after a desired time like 'sleep 60
 
 What was hard or went wrong: For getting the '&' after 'sleep' which froze the terminal(i should have used ctrl+C. Miss spelling file name (eventually renamed). Typing nano twice.I learnt only a user can delete its own command if i must use another user it must be a super user
 
-Commands I now know: 'sleep 900 &', 'ps aux | grep postgres', pgrep Name', 'kill PID' 'fg/bg'
+Commands I now know: 'sleep 900 &', 'ps aux | grep chonyd', 'pgrep -u postgres postgres', 'kill PID' 'fg/bg', 'kill -9', 'pkill mysleep','jobs','uptime', Ctrl+C and Ctrl+Z.
 
 Next: Week 2, Day 2 (services)
-
 
 
 ## Week 2, Day 2: Services (November 12, 2026)
