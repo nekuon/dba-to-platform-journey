@@ -221,3 +221,69 @@ sudo ss -tulpn | grep httpd     only the lines about httpd
 curl -s http://localhost:8080   ask the server on port 8080 (:8080 after the name = that port)
 
 Next: Week 3, Day 2 (names, ports and the firewall)
+
+## Week 3, Day 2: Names, ports and the firewall (Nov 24 2026)
+
+Hours spent: 7 hrs
+
+What I did:
+
+I cleaned my repo. Github was cleaned and committed to branch. Also i learnt how to reach and listen on a port. Checked my VM's active DNS servers in /etc/resolv.conf and via nmcli, and tested name resolution with getent and ping. Looked up standard service-to-port mappings
+
+What worked:
+
+getent hosts redhat.com resolved redhat.com to 52.200.142.250 and 34.235.198.240, proving DNS resolution works even when ICMP ping is blocked by Red Hat's servers. Using git log --stat clearly showed commits with many minus signs, leading straight to the 10 snapshots holding lost entries. Using git show HASH:PROGRESS.md recovered every missing day from Week 1 and Week 2 without changing or breaking my live files. Slicing entries with sed and appending with >> rebuilt a complete, chronological PROGRESS.md with 173 lines restored.
+
+What was hard or went wrong:
+
+I noted that omitting -a on sudo tee -a /etc/hosts would wipe out the entire hosts file; I learned to always back up system files first (cp /etc/hosts /etc/hosts.bak) and double-check append flags. Running git log inside a regular folder failed because the repository hadn't been cloned yet, I learned I must work inside the cloned repo folder.
+
+Commands I now know:
+
+Command | Plain words
+
+cat /etc/resolv.conf     which DNS server the machine uses
+
+nmcli device show enp0s3 | grep -i dns     the DNS servers NetworkManager gives that interface
+
+getent hosts redhat.com     look up a name the way programs do (hosts file, then DNS)
+
+getent ahosts localhost | head -3     all addresses for a name, in the order programs try them
+
+grep "^hosts" /etc/nsswitch.conf     the lookup order
+
+sudo cp /etc/hosts /etc/hosts.bak     make a backup copy
+
+echo "127.0.0.1 myweb" | sudo tee -a /etc/hosts     add a line to the hosts file as root. -a is essential. Without it, tee replaces the whole file.
+
+getent services http     the port number for a service name
+
+sudo firewall-cmd --get-active-zones     the zones in use, and their interfaces
+
+sudo firewall-cmd --list-all     everything the active zone allows
+
+sudo firewall-cmd --list-    ports only the ports opened by number
+
+sudo firewall-cmd --add-port=8080/tcp     open TCP port 8080 now only
+
+sudo firewall-cmd --reload     apply the permanent settings, and drop the runtime-only ones
+
+git status     where he is, and whether anything changed
+
+git remote -v     the address of the remote
+
+git --no-pager log --oneline     the commits, one per line, without the pager. The option goes before log, like dnf --disablerepo.
+
+git --no-pager log --oneline -- PROGRESS.md     only the commits that touched that file (-- separates the options from the file name)
+
+git --no-pager log --oneline --stat -- PROGRESS.md     the same, plus how many lines each commit added and removed
+
+git pull     download new commits from GitHub and update his copy
+
+git show 8c1ce66:PROGRESS.md     the file as it was in commit 8c1ce66
+
+grep -nE "^(#+ |Day [0-9]|Week [0-9])" FILE       the heading lines of an entry file, with line numbers (-E lets | mean "or"). In the terminal he types the | as a plain |... see the note below.
+
+sed -n '10,40p' FILE     print lines 10 to 40 add to the end of a file
+
+Next: Week 3, Day 3 (storage basics)
